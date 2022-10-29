@@ -7,6 +7,11 @@ INC= -iquote ./printf/includes\
 	 -iquote ./inc\
 	 -I./mlx/ 
 
+RED=\033[31m
+GREEN=\033[32m
+MAGENTA=\033[1;35m
+ENDC=\033[39m
+
 CC=cc
 CFLAG=
 SLB= ./printf/libftprintf.a
@@ -36,7 +41,7 @@ greeting:
 	@clear
 	@printf "====================================================\n"
 	@printf "====================================================\n"
-	@printf "\t$(RED)HELLO!!$(ENDC) Welcome To $(MAGENTA)$(NAME)$(ENDC)\n"
+	@printf "\t$(RED)HELLO!!$(ENDC) Welcome To $(MAGENTA)Fract-OL$(ENDC)\n"
 	@printf "====================================================\n"
 	@printf "====================================================\n"
 	@git log --oneline --graph --all -n10
