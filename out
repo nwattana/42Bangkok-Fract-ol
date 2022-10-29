@@ -1,0 +1,41 @@
+In file included from ./src/put_pixel.c:13:
+./inc/fractal.h:29:2: error: expected ';' after struct
+}
+ ^
+ ;
+./inc/fractal.h:18:1: warning: typedef requires a name [-Wmissing-declarations]
+typedef struct s_coor
+^~~~~~~
+./inc/fractal.h:55:2: error: unknown type name 't_error'
+        t_error         error;
+        ^
+./inc/fractal.h:57:2: error: unknown type name 't_coor'
+        t_coor          *coor;
+        ^
+1 warning and 3 errors generated.
+In file included from main.c:13:
+./inc/fractal.h:29:2: error: expected ';' after struct
+}
+ ^
+ ;
+./inc/fractal.h:18:1: warning: typedef requires a name [-Wmissing-declarations]
+typedef struct s_coor
+^~~~~~~
+./inc/fractal.h:55:2: error: unknown type name 't_error'
+        t_error         error;
+        ^
+./inc/fractal.h:57:2: error: unknown type name 't_coor'
+        t_coor          *coor;
+        ^
+main.c:28:78: warning: treating Unicode character as whitespace [-Wunicode-whitespace]
+        img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+                                                                                    ^
+main.c:38:3: error: implicit declaration of function 'yymlx_put_p' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                yymlx_put_p(&img, offset + i, max_y - offset, 0x00FF0000);
+                ^
+main.c:38:3: note: did you mean 'mlx_put_p'?
+./inc/fractal.h:62:6: note: 'mlx_put_p' declared here
+void    mlx_put_p(t_data *data, int x, int y, int color);
+        ^
+2 warnings and 4 errors generated.
+make: *** [setting] Error 1
