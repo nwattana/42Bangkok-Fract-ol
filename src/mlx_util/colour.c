@@ -6,14 +6,13 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 01:51:03 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/13 02:09:37 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:11:29 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		create_color(int r, int g, int b)
+int	create_color(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }
-

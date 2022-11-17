@@ -17,9 +17,7 @@ CFLAG=
 SLB= ./printf/libftprintf.a
 
 INPUT=./src/input/input.c \
-	  ./src/init/init.c \
 	  ./src/mlx_util/pix_put.c\
-	  ./src/mandelbrot.c\
 	  ./src/mlx_util/colour.c
 
 SRC= $(INPUT)

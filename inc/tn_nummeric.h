@@ -6,13 +6,20 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:05:56 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/11 19:56:40 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:24:34 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TN_NUMMERIC_H
 # define TN_NUMMERIC_H
 
+/*
+Error List
+Program_OK Not error show
+Malloc_Fail Some mulloc in program fail
+WRONG_INPUT input dose not matah to flist
+MLX_?? - init mlx asset
+*/
 typedef enum s_err
 {
 	PROGRAM_OK,
@@ -22,9 +29,11 @@ typedef enum s_err
 	MLX_ALLOCATE_ERROR,
 	MLX_WIN_ALLOCATE_ERROR,
 	MLX_IMG_ALLOC_FAIL
-
 }			t_err;
 
+/*
+Fractol List
+*/
 typedef enum e_flist
 {
 	DEFAULT,
