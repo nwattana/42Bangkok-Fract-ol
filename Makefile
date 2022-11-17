@@ -16,11 +16,16 @@ CC=cc
 CFLAG=
 SLB= ./printf/libftprintf.a
 
-INPUT=./src/input/input.c \
-	  ./src/mlx_util/pix_put.c\
-	  ./src/mlx_util/colour.c
+INPUT=./src/input/input.c
+INIT_FUNC=./src/tn_init_prog.c
 
-SRC= $(INPUT)
+MLX_FUNC =./src/mlx_util/pix_put.c\
+	 		 ./src/mlx_util/colour.c\
+			 ./src/key_hook.c\
+			 ./src/tn_preexit.c
+FRAC = ./src/tn_makeimage.c
+
+SRC= $(INPUT) $(INIT_FUNC) $(MLX_FUNC) $(FRAC)
 
 all: test 
 
@@ -30,9 +35,6 @@ test: lib
 run: test
 	./$(NAME) mandelbrot
 
-setting: lib
-	$(CC) $(CFLAG) $(INC) $(MLX) ./mlx/libmlx.a $(SLB) $(SRC) main.c -o $(NAME)
-
 clean:
 	@make -C ./printf/ clean
 	
@@ -40,12 +42,14 @@ clean:
 fclean: clean
 	@make -C ./printf/ fclean
 	@rm -rf $(NAME)
+	@rm -rf libmlx.a
 
-re: fclean setting
+re: fclean all
 
 lib:
-	make -C ./printf/
-	make -C ./mlx/
+	@make -C ./printf/
+	@make -C ./mlx/
+	@cp ./mlx/libmlx.a ./
 
 greeting:
 	@clear

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tn_key.h                                           :+:      :+:    :+:   */
+/*   tn_preexit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 13:33:51 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/17 21:45:37 by nwattana         ###   ########.fr       */
+/*   Created: 2022/11/17 22:02:39 by nwattana          #+#    #+#             */
+/*   Updated: 2022/11/17 23:00:16 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef TN_KEY_H
-# define TN_KEY_H
 
-# define KEY_ESC 53
-# define KEY_ENT 36
+#include "fractol.h"
 
-
-#endif
+void	pre_exit(t_prog *prog)
+{
+	if (prog->img_data)
+	{
+		ft_printf("Exit JA\n");
+		free(prog->img_data);
+		prog->img_data = NULL;
+	}
+}

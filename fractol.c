@@ -6,31 +6,40 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:08:18 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/17 18:14:33 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:19:09 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw_img(t_prog *prog);
+t_img	init_img(void)
+{
+	return ((t_img){.img = NULL, .addr = NULL, \
+			.bpp = 0, .llen = 0, .edn = 0});
+}
+
 int	main(int argc, char *argv[])
 {
 	t_prog		prog;
+//	t_img		img;
 
-	if (argc > 0)
-	{
-		prog.error = 0;
-		check_input(&prog ,argc, argv);
-	}
-/*	if (!prog.error)
-		tn_init_mlx(&prog);
+//	img = init_img();
+//	prog.img_data = &img;
+	prog.error = 0;
+	prog.zoom = 200;
+	if (argc < 2 && argc > 3)
+		return (WRONG_INPUT_AMOUNT);
+	check_input(&prog, argc, argv);
+	if (prog.error)
+		return (prog.error);
+	if (init_prog_data(&prog))
+		return (0);
 	ft_printf("prog->error = %d\n", prog.error);
 	ft_printf("prog->type = %d\n", prog.type);
-	if (!prog.error)
-	{
-		draw_img(&prog);
-		mlx_loop(prog.mlx->mlx);
-	}*/
+	mk_img(&prog);
+	mlx_put_image_to_window(prog.mlx, prog.mlx_win, prog.img_data->img, 0, 0);
+	mlx_key_hook(prog.mlx_win, key_hook, &prog);
+	mlx_loop(prog.mlx);
 }
 /*
 void	draw_img(t_prog *prog)

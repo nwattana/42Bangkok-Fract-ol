@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 18:19:15 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/17 18:21:31 by nwattana         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:35:06 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/14 12:45:07 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:12:56 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -39,6 +27,21 @@ typedef struct s_img
 	int		llen;
 	int		edn;
 }			t_img;
+
+typedef struct s_comp
+{
+	float	r;
+	float	i;
+	float	mag;
+}			t_comp;
+
+
+typedef struct s_plot
+{
+	unsigned int	max_iter;
+	unsigned int	i;
+}		t_pl;
+
 /*
  mlx -> mlx lib
  mlx_win -> mlx_win init
@@ -50,12 +53,35 @@ typedef struct s_prog
 {
 	t_err		error;
 	t_flist		type;
+	void	*mlx;
+	void	*mlx_win;
+	t_img	*img_data;
+	int		offset_x;
+	int		offset_y;
+	int		mlx_status;
+	int		mlx_win_status;
+	int		img_status;
+	unsigned int	zoom;
+	unsigned int	high;
+	unsigned int	width;
 }		t_prog;
 
 void	check_input(t_prog *prog, int argc, char *argv[]);
 void	put_fractol_list(void);
-void	pix_put(t_img *img, int x, int y, int color);
+void	pix_put(t_img *img, int x, int y, unsigned int color);
 int		create_color(int r, int g, int b);
+int		init_prog_data(t_prog *prog);
 
+int		key_hook(int keycode, t_prog *prog);
+
+void	mk_img(t_prog *prog);
+float	imap(float val, float st, float end, t_prog *prog);
+float	imap_x(float val, float st, float end, t_prog *prog);
+float	imap_y(float val, float st, float end, t_prog *prog);
+unsigned int		mk_mandelbrot(float x, float y);
+unsigned int		mk_julia(float x, float y);
+
+// exit
+void	pre_exit(t_prog *prog);	
 
 #endif

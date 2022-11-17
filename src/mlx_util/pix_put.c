@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 20:05:53 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/17 18:11:02 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:07:06 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 * just return
 *
 */
-void	pix_put(t_img *data, int x, int y, int color)
+void	pix_put(t_img *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 

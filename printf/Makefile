@@ -6,7 +6,7 @@
 #    By: nwattana <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/11 13:10:10 by nwattana          #+#    #+#              #
-#    Updated: 2022/08/18 22:38:03 by nwattana         ###   ########.fr        #
+#    Updated: 2022/11/17 18:30:13 by nwattana         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,15 +47,15 @@ CFLAG = -Wall -Wextra -Werror
 all : ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT}
-	ar rc ${NAME} ${OBJ}
+	@ar rc ${NAME} ${OBJ}
 
 ${OBJ}:%.o:${SRC_DIR}/%.c
-	${CC} ${CFLAG} -I ${INC_DIR} -I ${LIBFT_DIR} -c $< -o $@
+	@${CC} ${CFLAG} -I ${INC_DIR} -I ${LIBFT_DIR} -c $< -o $@
 
 ${LIBFT}:
 	echo "MAKE LIBFT"
-	make -C ${LIBFT_DIR} bonus
-	cp ${LIBFT} ${NAME}
+	@make -C ${LIBFT_DIR} bonus
+	@cp ${LIBFT} ${NAME}
 
 bonus : all
 
