@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 02:21:19 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:19:08 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:49:15 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	mk_img(t_prog *prog)
 
 	prog->offset_x = 0;
 	prog->offset_y = 0;
-	zoom = 1;
+	zoom = 1000;
 	st = 2;
 	en = -2;
 	max_iter = 200;
@@ -51,10 +51,10 @@ void	mk_img(t_prog *prog)
 		x = 0;
 		while (x < prog->width)
 		{
-//			i = mk_mandelbrot(imap_x(x + prog->offset_x, en/zoom, st/zoom, prog), \
+			i = mk_mandelbrot(imap_x(x + prog->offset_x, en, st, prog)*(zoom/prog->zoom), \
+				imap_y(y + prog->offset_y, st, en, prog)*(zoom/prog->zoom));
+//			i = mk_julia(imap_x(x + prog->offset_x, en/zoom, st/zoom, prog), \
 //				imap_y(y + prog->offset_y, st/zoom, en/zoom, prog));
-			i = mk_julia(imap_x(x + prog->offset_x, en/zoom, st/zoom, prog), \
-				imap_y(y + prog->offset_y, st/zoom, en/zoom, prog));
 			if (i%4 == 1)
 				color = create_color(2 * (i+ 10), max_iter - i,  max_iter - i);
 			else if (i%4 == 2)
@@ -69,6 +69,9 @@ void	mk_img(t_prog *prog)
 	//	printf("\n");
 		y++;
 	}
+	mlx_put_image_to_window(prog->mlx, prog->mlx_win, \
+			prog->img_data->img, 0, 0);
+	//printf("Incoming Co x=%f, y=%f\n", x, y);
 }
 
 float	imap(float val, float st, float end, t_prog *prog)

@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:33:51 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/17 21:45:37 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:27:28 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef TN_KEY_H
@@ -14,6 +14,6 @@
 
 # define KEY_ESC 53
 # define KEY_ENT 36
-
+# define KEY_PLUS 24
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:05:16 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:19:12 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 03:49:16 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ static void	initial_const(t_prog *prog)
 	prog->img_data = NULL;
 	prog->high = 1200;
 	prog->width = 1200;
+	prog->zoom = 1000;
 }
