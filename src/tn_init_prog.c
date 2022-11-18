@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:05:16 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:49:16 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 07:37:11 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ static int	init_prog_asset(t_prog *prog)
 		return (MLX_WIN_ALLOCATE_ERROR);
 	prog->img_data = malloc(sizeof(t_img));
 	if (!prog->img_data)
-	{
 		return (MALLOC_FAIL);
-	}
 	prog->img_data->img = mlx_new_image(prog->mlx, \
 		prog->width + 1, prog->high + 1);
 	if (!prog->img_data->img)
@@ -52,6 +50,8 @@ static int	init_prog_asset(t_prog *prog)
 	tmp = prog->img_data;
 	tmp->addr = mlx_get_data_addr(tmp->img, \
 		&(tmp->bpp), &(tmp->llen), &(tmp->edn));
+	if (mk_cdata(prog))
+		return (prog->error);
 	return (PROGRAM_OK);
 }
 
@@ -70,4 +70,5 @@ static void	initial_const(t_prog *prog)
 	prog->high = 1200;
 	prog->width = 1200;
 	prog->zoom = 1000;
+	prog->max_iter = 255;
 }

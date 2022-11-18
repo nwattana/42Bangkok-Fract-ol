@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:35:06 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:12:56 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 07:55:20 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -61,15 +61,21 @@ typedef struct s_prog
 	int		mlx_status;
 	int		mlx_win_status;
 	int		img_status;
+	unsigned int	max_iter;
 	unsigned int	zoom;
 	unsigned int	high;
 	unsigned int	width;
+	unsigned int	*color;
 }		t_prog;
 
 void	check_input(t_prog *prog, int argc, char *argv[]);
 void	put_fractol_list(void);
 void	pix_put(t_img *img, int x, int y, unsigned int color);
+
 int		create_color(int r, int g, int b);
+int		mk_cdata(t_prog *prog);
+int		hsltohex(int h, int l, int s);
+
 int		init_prog_data(t_prog *prog);
 
 int		key_hook(int keycode, t_prog *prog);
@@ -83,5 +89,6 @@ unsigned int		mk_julia(float x, float y);
 
 // exit
 void	pre_exit(t_prog *prog);	
+int	close_win(int keycode, t_prog *prog);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:41:13 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:49:14 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 08:00:08 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,27 @@ int		key_hook(int keycode, t_prog *prog)
 	if (keycode == KEY_PLUS)
 	{
 		mlx_clear_window(prog->mlx, prog->mlx_win);
-		prog->zoom += 10;
+		prog->zoom += 100;
+		ft_printf("Zoom in = 1000/%d\n", prog->zoom);
+		mk_img(prog);
+	}
+	if (keycode == KEY_RSQBRAC)
+	{
+		mlx_clear_window(prog->mlx, prog->mlx_win);
+		prog->zoom += 1000;
 		ft_printf("Zoom in = 1000/%d\n", prog->zoom);
 		mk_img(prog);
 	}
 	ft_printf("Hello from key hook\n");
+	return (0);
+}
+
+int	close_win(int keycode, t_prog *prog)
+{
+	if (keycode)
+	{
+		pre_exit(prog);
+		exit(0);
+	}
 	return (0);
 }

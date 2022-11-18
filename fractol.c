@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:08:18 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:36:43 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 08:00:07 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int argc, char *argv[])
 	ft_printf("prog->type = %d\n", prog.type);
 	mk_img(&prog);
 	mlx_key_hook(prog.mlx_win, key_hook, &prog);
+//	mlx_hook(prog.mlx_win, 17,1L<<0, close_win, &prog);
+//	mlx_expose_hook(prog.mlx_win, close_win, &prog);
 	mlx_loop(prog.mlx);
 }
 /*

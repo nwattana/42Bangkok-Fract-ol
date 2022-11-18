@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 02:21:19 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 03:49:15 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 07:49:26 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	mk_img(t_prog *prog)
 				imap_y(y + prog->offset_y, st, en, prog)*(zoom/prog->zoom));
 //			i = mk_julia(imap_x(x + prog->offset_x, en/zoom, st/zoom, prog), \
 //				imap_y(y + prog->offset_y, st/zoom, en/zoom, prog));
-			if (i%4 == 1)
+		/*	if (i%4 == 1)
 				color = create_color(2 * (i+ 10), max_iter - i,  max_iter - i);
 			else if (i%4 == 2)
 				color = create_color(max_iter - i, max_iter - i, 2 * (i+ 10));
 			else if (i%4 == 3)
 				color = create_color(max_iter - i, 2 * (i+ 10), max_iter - i );
 			else
-				color = create_color(0,0,0);
-			pix_put(prog->img_data, x, y, color);
+				color = create_color(0,0,0);*/
+			pix_put(prog->img_data, x, y, prog->color[i]);
 			x++;
 		}
 	//	printf("\n");
@@ -95,7 +95,7 @@ unsigned int		mk_mandelbrot(float x, float y)
 	t_pl	pl;
 	float	tmp;
 
-	pl = (t_pl){.max_iter=200, .i=0};
+	pl = (t_pl){.max_iter=255, .i=0};
 	num=(t_comp){.r=x, .i=y, .mag=0};
 	num.mag = num.r * num.r + num.i * num.i;
 	while (pl.i < pl.max_iter && num.mag < 4)
