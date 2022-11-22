@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 22:06:36 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 23:50:55 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:22:36 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	julia(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	i = 0;
 	comp.r = pl->x_cal;
@@ -32,13 +32,12 @@ void	julia(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }
 
 void	julia1(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	prog->max_iter = 500;
 	i = 0;
@@ -56,12 +55,12 @@ void	julia1(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }
+
 void	julia2(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	i = 0;
 	comp.r = pl->x_cal;
@@ -78,5 +77,4 @@ void	julia2(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }

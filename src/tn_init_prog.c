@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:05:16 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 23:51:16 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:07:39 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	init_prog_asset(t_prog *prog)
 	prog->mlx = mlx_init();
 	if (!prog->mlx)
 		return (MLX_ALLOCATE_ERROR);
-	prog->mlx_win = mlx_new_window(prog->mlx,\
+	prog->mlx_win = mlx_new_window(prog->mlx, \
 		prog->width, prog->high, "fractol");
 	if (!prog->mlx_win)
 		return (MLX_WIN_ALLOCATE_ERROR);
@@ -64,5 +64,5 @@ static void	initial_const(t_prog *prog)
 	prog->zoom = 10000;
 	prog->zoom_base = 10000;
 	prog->zoom_cal = 1;
-	prog->max_iter = 30000;
+	prog->max_iter = 10000;
 }

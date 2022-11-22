@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:41:13 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/19 01:34:21 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:30:07 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	move(int key, t_prog *prog);
 
-int		key_hook(int keycode, t_prog *prog)
+int	key_hook(int keycode, t_prog *prog)
 {
 	if (keycode == KEY_ESC)
 	{
@@ -27,7 +27,6 @@ int		key_hook(int keycode, t_prog *prog)
 		mlx_clear_window(prog->mlx, prog->mlx_win);
 		move(keycode, prog);
 	}
-	ft_printf("Hello from key hook %d\n" , keycode);
 	return (0);
 }
 
@@ -53,12 +52,11 @@ static void	move(int key, t_prog *prog)
 	if (key == KEY_RIGHT || key == KEY_A_D)
 		prog->shift_x -= 40;
 	mk_img(prog);
-	printf("Zoome = %f\n", prog->zoom_cal);
-
 }
 
 int	close_win(int keycode, t_prog *prog)
 {
+	prog->zoom = 1;
 	if (keycode)
 		exit(0);
 	return (0);

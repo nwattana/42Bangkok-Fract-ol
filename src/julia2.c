@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 22:06:36 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 22:51:02 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:56:25 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	julia3(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	i = 0;
 	comp.r = pl->x_cal;
@@ -32,13 +32,12 @@ void	julia3(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }
 
 void	julia4(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	i = 0;
 	comp.r = pl->x_cal;
@@ -55,14 +54,15 @@ void	julia4(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }
+
 void	julia5(t_pl *pl, t_prog *prog)
 {
-	t_comp comp;
-	unsigned int i;
+	t_comp			comp;
+	unsigned int	i;
 
 	i = 0;
+	prog->max_iter = 500;
 	comp.r = pl->x_cal;
 	comp.i = pl->y_cal;
 	comp.cr = 0.355534;
@@ -77,5 +77,4 @@ void	julia5(t_pl *pl, t_prog *prog)
 		comp.mag = comp.r * comp.r + comp.i * comp.i;
 	}
 	pl->i = i;
-	
 }
