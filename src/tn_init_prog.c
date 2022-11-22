@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 20:05:16 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 07:37:11 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/18 23:51:16 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ int	init_prog_data(t_prog *prog)
 	if (prog->error)
 		return (prog->error);
 	initial_const(prog);
-	if (init_prog_asset(prog) == 0)
-	{
-		prog->mlx_status = 1;
-		prog->mlx_win_status = 1;
-		prog->img_status = 1;
-	}
+	init_prog_asset(prog);
 	return (PROGRAM_OK);
 }
 
@@ -59,16 +54,15 @@ static void	initial_const(t_prog *prog)
 {
 	if (prog->error)
 		return ;
-	prog->offset_x = 0;
-	prog->offset_y = 0;
-	prog->mlx_status = 0;
-	prog->mlx_win_status = 0;
-	prog->img_status = 0;
+	prog->shift_x = 0;
+	prog->shift_y = 0;
 	prog->mlx = NULL;
 	prog->mlx_win = NULL;
 	prog->img_data = NULL;
-	prog->high = 1200;
-	prog->width = 1200;
-	prog->zoom = 1000;
-	prog->max_iter = 255;
+	prog->high = 800;
+	prog->width = 800;
+	prog->zoom = 10000;
+	prog->zoom_base = 10000;
+	prog->zoom_cal = 1;
+	prog->max_iter = 30000;
 }

@@ -6,7 +6,7 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:35:06 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 07:55:20 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/19 01:54:12 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FRACTOL_H
@@ -32,7 +32,10 @@ typedef struct s_comp
 {
 	float	r;
 	float	i;
+	float	cr;
+	float	ci;
 	float	mag;
+	float	tmp;
 }			t_comp;
 
 
@@ -40,6 +43,14 @@ typedef struct s_plot
 {
 	unsigned int	max_iter;
 	unsigned int	i;
+	unsigned int	x_plot;
+	unsigned int	y_plot;
+	float			x_cal;
+	float			y_cal;
+	float			x_cmin;
+	float			y_cmin;
+	float			x_range;
+	float			y_range;
 }		t_pl;
 
 /*
@@ -56,13 +67,12 @@ typedef struct s_prog
 	void	*mlx;
 	void	*mlx_win;
 	t_img	*img_data;
-	int		offset_x;
-	int		offset_y;
-	int		mlx_status;
-	int		mlx_win_status;
-	int		img_status;
+	int		shift_x;
+	int		shift_y;
 	unsigned int	max_iter;
-	unsigned int	zoom;
+	float			zoom;
+	float			zoom_base;
+	float			zoom_cal;
 	unsigned int	high;
 	unsigned int	width;
 	unsigned int	*color;
@@ -74,21 +84,26 @@ void	pix_put(t_img *img, int x, int y, unsigned int color);
 
 int		create_color(int r, int g, int b);
 int		mk_cdata(t_prog *prog);
-int		hsltohex(int h, int l, int s);
+int		hsltohex(float h, float l, float s);
 
 int		init_prog_data(t_prog *prog);
 
 int		key_hook(int keycode, t_prog *prog);
 
 void	mk_img(t_prog *prog);
-float	imap(float val, float st, float end, t_prog *prog);
-float	imap_x(float val, float st, float end, t_prog *prog);
-float	imap_y(float val, float st, float end, t_prog *prog);
-unsigned int		mk_mandelbrot(float x, float y);
-unsigned int		mk_julia(float x, float y);
+void	mandelbrot(t_pl *pl, t_prog *prog);
+void	julia(t_pl *pl, t_prog *prog);
+void	julia1(t_pl *pl, t_prog *prog);
+void	julia2(t_pl *pl, t_prog *prog);
+void	julia3(t_pl *pl, t_prog *prog);
+void	julia4(t_pl *pl, t_prog *prog);
+void	julia5(t_pl *pl, t_prog *prog);
+void	get_depth(t_flist type, t_pl *pl, t_prog *prog);
+void	init_pl(t_pl *pl, t_prog *prog);
+int		imouse_hook(int key, int x, int y, t_prog *prog);
+
 
 // exit
 void	pre_exit(t_prog *prog);	
-int	close_win(int keycode, t_prog *prog);
-
+int		close_win(int keycode, t_prog *prog);
 #endif

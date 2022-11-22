@@ -6,11 +6,13 @@
 /*   By: nwattana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 21:41:13 by nwattana          #+#    #+#             */
-/*   Updated: 2022/11/18 08:00:08 by nwattana         ###   ########.fr       */
+/*   Updated: 2022/11/19 01:34:21 by nwattana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	move(int key, t_prog *prog);
 
 int		key_hook(int keycode, t_prog *prog)
 {
@@ -20,30 +22,44 @@ int		key_hook(int keycode, t_prog *prog)
 		pre_exit(prog);
 		exit(0);
 	}
-	if (keycode == KEY_PLUS)
+	else if (keycode <= 160)
 	{
 		mlx_clear_window(prog->mlx, prog->mlx_win);
-		prog->zoom += 100;
-		ft_printf("Zoom in = 1000/%d\n", prog->zoom);
-		mk_img(prog);
+		move(keycode, prog);
 	}
-	if (keycode == KEY_RSQBRAC)
-	{
-		mlx_clear_window(prog->mlx, prog->mlx_win);
-		prog->zoom += 1000;
-		ft_printf("Zoom in = 1000/%d\n", prog->zoom);
-		mk_img(prog);
-	}
-	ft_printf("Hello from key hook\n");
+	ft_printf("Hello from key hook %d\n" , keycode);
 	return (0);
+}
+
+static void	move(int key, t_prog *prog)
+{
+	if (key == KEY_PLUS)
+	{
+		if (prog->zoom_cal > 0.021)
+			prog->zoom_cal -= 0.02;
+		else if (prog->zoom_cal > 0.0021)
+			prog->zoom_cal -= 0.002;
+		else if (prog->zoom_cal > 0.0001)
+			prog->zoom_cal -= 0.0001;
+	}
+	if (key == KEY_MINUS)
+		prog->zoom_cal += 0.02;
+	if (key == KEY_TOP || key == KEY_A_W)
+		prog->shift_y += 40;
+	if (key == KEY_BOT || key == KEY_A_S)
+		prog->shift_y -= 40;
+	if (key == KEY_LEFT || key == KEY_A_A)
+		prog->shift_x += 40;
+	if (key == KEY_RIGHT || key == KEY_A_D)
+		prog->shift_x -= 40;
+	mk_img(prog);
+	printf("Zoome = %f\n", prog->zoom_cal);
+
 }
 
 int	close_win(int keycode, t_prog *prog)
 {
 	if (keycode)
-	{
-		pre_exit(prog);
 		exit(0);
-	}
 	return (0);
 }

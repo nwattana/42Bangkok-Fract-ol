@@ -13,7 +13,7 @@ MAGENTA=\033[1;35m
 ENDC=\033[39m
 
 CC=cc
-CFLAG=
+CFLAG= -g
 SLB= ./printf/libftprintf.a
 
 INPUT=./src/input/input.c
@@ -22,8 +22,12 @@ INIT_FUNC=./src/tn_init_prog.c
 MLX_FUNC =./src/mlx_util/pix_put.c\
 	 		 ./src/mlx_util/colour.c\
 			 ./src/key_hook.c\
-			 ./src/tn_preexit.c
-FRAC = ./src/tn_makeimage.c
+			 ./src/tn_preexit.c\
+			 ./src/julia.c\
+			 ./src/julia2.c\
+			 ./src/mouse_hook.c
+#FRAC = ./src/tn_makeimage.c
+FRAC = ./src/tn_mkimg.c
 
 SRC= $(INPUT) $(INIT_FUNC) $(MLX_FUNC) $(FRAC)
 
